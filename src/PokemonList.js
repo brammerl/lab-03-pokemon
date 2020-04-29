@@ -4,9 +4,11 @@ export default class PokemonList extends Component {
     render() {
         return (
             <div>
-                this.prop.data.filter(pokemon => {
-                    return <PokemonCard ind={pokemon}/>
+            {
+                this.props.array.map(pokemon => {
+                    return <PokemonCard pokemon={pokemon}/>
                 })  
+            }
             </div>
         )
     }
