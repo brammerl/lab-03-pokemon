@@ -1,9 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { shallow } from 'enzyme';
+import Header from './Header.js';
+import Select from './Select.js';
+it('renders welcome message', () => {
+  const wrapper = shallow(<Header />);
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+  expect(wrapper).toMatchSnapshot();
 });
+
+it('renders welcome message', () => {
+  const wrapper = shallow(<Select />);
+
+  expect(wrapper).toMatchSnapshot();
+});
+
+

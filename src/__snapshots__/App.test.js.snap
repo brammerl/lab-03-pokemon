@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders welcome message 1`] = `
+<header>
+  <h1>
+    Pokedex
+  </h1>
+</header>
+`;
+
+exports[`renders welcome message 2`] = `
+<div
+  id="selector"
+>
+  <select>
+    <option
+      defaultValue={true}
+      value=""
+    >
+      All
+    </option>
+    <option
+      value="water"
+    >
+      Water
+    </option>
+    <option
+      value="fire"
+    >
+      Fire
+    </option>
+    <option
+      value="earth"
+    >
+      Earth
+    </option>
+  </select>
+</div>
+`;

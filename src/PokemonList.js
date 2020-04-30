@@ -3,7 +3,7 @@ import PokemonCard from './PokemonCard.js';
 export default class PokemonList extends Component {
     render() {
         return (
-            <ul>
+            <ul id='mainList'>
             {
                 this.props.array.map(pokemon => {
                     return <PokemonCard pokemon={pokemon}/>
