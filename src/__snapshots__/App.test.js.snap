@@ -1,6 +1,71 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders welcome message 1`] = `
+exports[`creates profile 1`] = `
+<div>
+  <h1
+    id="pokemonName"
+  >
+    venusaur
+  </h1>
+  <section
+    id="pokemonBox"
+  >
+    <img
+      alt="Look! A cute pokemon!"
+      id="profileImg"
+      src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png"
+    />
+    <section
+      id="information"
+    >
+      <ul
+        id="basicInfo"
+      >
+        <li>
+          <h2>
+            Basic Information
+          </h2>
+        </li>
+        <li>
+          Generation: 
+          1
+        </li>
+        <li>
+          Primary Type: 
+          grass
+        </li>
+        <li>
+          Height: 
+          20
+           meters
+        </li>
+        <li>
+          Weight: 
+          1000
+           kg
+        </li>
+        <li>
+          Base XP: 
+          236
+        </li>
+        <li>
+          HP: 
+          80
+        </li>
+        <li>
+          <a
+            href="http://www.pokemon.com/us/pokedex/venusaur"
+          >
+            More Info
+          </a>
+        </li>
+      </ul>
+    </section>
+  </section>
+</div>
+`;
+
+exports[`renders header 1`] = `
 <header>
   <h1>
     Pokedex
@@ -8,7 +73,7 @@ exports[`renders welcome message 1`] = `
 </header>
 `;
 
-exports[`renders welcome message 2`] = `
+exports[`renders the drop down for type 1`] = `
 <div
   id="selector"
 >

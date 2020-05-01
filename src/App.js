@@ -22,9 +22,7 @@ export default class App extends Component {
                         <Route
                             path='/pokemon/:pokemon'
                             render={(routerProps) => <DetailPage {...routerProps}/>}
-                        />
-
-                        
+                        />  
                     </Switch>
                 </Router>
             </div>

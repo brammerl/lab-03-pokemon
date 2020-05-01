@@ -13,6 +13,7 @@ export default class DetailPage extends Component {
     async componentDidMount() {
         const data = await request.get( `https://alchemy-pokedex.herokuapp.com/api/pokedex/${this.props.match.params.pokemon}`)
         this.setState({pokemonInfo: data.body})
+        console.log(this.state.pokemonInfo);
     }
     render() {
         return (
