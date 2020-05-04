@@ -9,33 +9,34 @@ export default class PokemonList extends Component {
         typeQuery: '',
         pokemonData: [],
         page: 1,
-        pokemonCount: 0
       };
     
       async componentDidMount() {
         // wait for the request to finish
         const searchParams = new URLSearchParams(window.location.search);
         const query = searchParams.get('search');
-  
-        this.setState( {searchQuery: query});
-        
+        const typeQuery = searchParams.get('type');
 
+       
+    
+        if (query) {
+            let page = 1;
+            if( searchParams.get('page')) {
+                page = searchParams.get('page');
+            }
+            this.setState( {searchQuery: query});
+            this.setState( {typeSearch:  typeQuery});
+            const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${query}&type=${typeQuery}`)   
 
-
-
-        const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${this.state.page}`)    
-
-        console.log(data);
-        // this.setState({ pokemonData: data.body.results })
-        // this.setState({pokemonCount: data.body.count})
+            const pokemon = data.body.results;
+            this.setState({pokemonData: pokemon, page: page})
+        } 
     }
     
     handleChange = (event) => {
         const eventVal = event.target.value;
         this.setState({searchQuery: eventVal});
 
-
-    
     };
     
     typeChange = (e) => {
@@ -45,10 +46,11 @@ export default class PokemonList extends Component {
     
     handleClick = async() => {
       const tester = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${this.state.page}`)
+      console.log(tester);
       const updatedCount = tester.body.count
       const results = tester.body.results;
-
-      this.setState({pokemonCount: updatedCount}, { pokemonData: results});
+      this.setState({pokemonCount: updatedCount, pokemonData: results});
+      
       
     }
 
@@ -56,14 +58,15 @@ export default class PokemonList extends Component {
         const nextPageNumber = this.state.page + 1;
         this.setState({page: nextPageNumber});
         
-        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${this.state.page}`)
+        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${nextPageNumber}`)
+        console.log(response);
+        console.log(response.body.results);
         response.body.page = this.state.page;
         this.setState({pokemonData: response.body.results})
-
-
-
     }
+
     render() {
+        console.log(this.state.searchQuery);
         return (
         <div>
             <Select selectFxn={this.typeChange} 

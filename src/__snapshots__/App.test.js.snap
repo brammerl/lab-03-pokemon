@@ -1,6 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`creates profile 1`] = `
+
+
+exports[`creates profile2 1`] = `
 <div>
   <h1
     id="pokemonName"
@@ -73,7 +75,9 @@ exports[`renders header 1`] = `
 </header>
 `;
 
-exports[`renders the drop down for type 1`] = `
+
+
+exports[`renders the drop down for type2 1`] = `
 <div
   id="selector"
 >
@@ -100,5 +104,11 @@ exports[`renders the drop down for type 1`] = `
       Earth
     </option>
   </select>
+  <input
+    placeholder="Enter Pokemone Name"
+  />
+  <button>
+    Search
+  </button>
 </div>
 `;

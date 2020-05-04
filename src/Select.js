@@ -8,10 +8,10 @@ export default class Select extends Component {
                 <option value='' defaultValue>All</option>
                         <option value='water'>Water</option>
                         <option value='fire'>Fire</option>
-                        <option value='earth'>Earth</option>
+                        <option value='grass'>Grass</option>
                 </select>
                 <input onChange={this.props.inputFxn} placeholder='Enter Pokemone Name'/>
-            <button onClick={this.props.clickFxn}>Search</button>
+                <button onClick={this.props.clickFxn}>Search</button>
             </div>
         )
     }

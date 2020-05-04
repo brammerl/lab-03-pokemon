@@ -44,13 +44,13 @@ it('renders header', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it('renders the drop down for type', () => {
+it('renders the drop down for type2', () => {
   const wrapper = shallow(<Select />);
 
   expect(wrapper).toMatchSnapshot();
 });
 
-it('creates profile', () => {
+it('creates profile2', () => {
   const wrapper = shallow(<PokemonProfile name={testObj}/>);
 
   expect(wrapper).toMatchSnapshot();
