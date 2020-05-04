@@ -16,16 +16,12 @@ export default class PokemonList extends Component {
         const searchParams = new URLSearchParams(window.location.search);
         const query = searchParams.get('search');
         const typeQuery = searchParams.get('type');
-
-       
-    
         if (query) {
             let page = 1;
             if( searchParams.get('page')) {
                 page = searchParams.get('page');
             }
-            const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${query}&type=${typeQuery}`)   
-
+            const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${query}&page=${page}`)   
             const pokemon = data.body.results;
             this.setState({pokemonData: pokemon, page: page})
         } 
@@ -43,13 +39,19 @@ export default class PokemonList extends Component {
     };
     
     handleClick = async() => {
-      const tester = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${this.state.page}`)
-      console.log(tester);
-      const updatedCount = tester.body.count
-      const results = tester.body.results;
-      this.setState({pokemonCount: updatedCount, pokemonData: results});
-      
-      
+        if (this.state.searchQuery && this.state.typeQuery) {
+            const tester = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${this.state.page}`)
+            const results = tester.body.results;
+            this.setState({pokemonData: results});
+        } else if (this.state.searchQuery) {
+            const tester = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&page=${this.state.page}`);
+            const results = tester.body.results;
+            this.setState({pokemonData: results});
+        } else {
+            const tester = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?type=${this.state.typeQuery}&page=${this.state.page}`)
+            const results = tester.body.results;
+            this.setState({pokemonData: results});
+        }
     }
 
     nextPageClick = async () => {
@@ -57,13 +59,26 @@ export default class PokemonList extends Component {
         this.setState({page: nextPageNumber});
         
         const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${nextPageNumber}`)
-        console.log(response);
-        console.log(response.body.results);
+        const results = response.body.results
+
+        if (results){
+         this.setState({pokemonData: results})
+        } 
+    }
+
+        
+
+    lastPageClick = async () => {
+        const lastPageNumber = this.state.page - 1;
+        this.setState({page: lastPageNumber});
+        
+        const response = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${this.state.searchQuery}&type=${this.state.typeQuery}&page=${lastPageNumber}`)
         response.body.page = this.state.page;
         this.setState({pokemonData: response.body.results})
     }
 
     render() {
+        console.log(this.state);
         return (
         <div>
             <Select selectFxn={this.typeChange} 
@@ -76,7 +91,9 @@ export default class PokemonList extends Component {
                 })  
             }
             </ul>
-            {this.state.pokemonCount > 20 && <button onClick={this.nextPageClick}>Next</button>}
+            {this.state.page >= 2 && <button onClick={this.lastPageClick}>Previous</button>}
+            {this.state.pokemonData && <button onClick={this.nextPageClick} id='next'>Next</button>}
+            
         </div>
         )
     }
