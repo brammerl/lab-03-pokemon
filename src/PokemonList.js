@@ -1,7 +1,39 @@
 import React, { Component } from 'react'
-import PokemonCard from './PokemonCard.js';
-import Select from './Select.js';
+// import { makeStyles } from '@material-ui/core/styles'
+// import PokemonCard from './PokemonCard.js';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+// import FormHelperText from '@material-ui/core/FormHelperText';
+import InputLabel from '@material-ui/core/InputLabel'
 import request from 'superagent';
+import TextField from '@material-ui/core/TextField';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import Button from '@material-ui/core/Button';
+import IconButton from '@material-ui/core/IconButton'
+import InfoIcon from '@material-ui/icons/Info';
+
+import { Link } from 'react-router-dom';
+
+
+
+
+// const useStyles = makeStyles({
+//     formControl: {
+//       margin: '10px',
+//       minwidth: 120,
+
+
+//     },
+//   });
+
+//   export default function SimpleSelect() {
+//     const classes = useStyles();
+  
+//     };
 export default class PokemonList extends Component {
 
     state = {
@@ -72,8 +104,6 @@ export default class PokemonList extends Component {
         } 
     }
 
-        
-
     lastPageClick = async () => {
         const lastPageNumber = this.state.page - 1;
         this.setState({page: lastPageNumber});
@@ -84,22 +114,53 @@ export default class PokemonList extends Component {
     }
 
     render() {
-        console.log(this.state);
         return (
         <div>
-            <Select selectFxn={this.typeChange} 
-            inputFxn={this.handleChange} 
-            clickFxn={this.handleClick}/>
-            <ul id='mainList'>
-            {
-                this.state.pokemonData.map(pokemon => {
-                    return <PokemonCard pokemon={pokemon}/>
-                })  
-            }
-            </ul>
-            {this.state.page >= 2 && <button onClick={this.lastPageClick}>Previous</button>}
-            {this.state.pokemonData && <button onClick={this.nextPageClick} id='next'>Next</button>}
-            
+            <section id='searchArea'>
+                <div className='searchBox'>
+                    <FormControl className='formControl'>
+                    <InputLabel id="typeLabel">Type</InputLabel>
+                    <Select
+                    labelId="typeSelect"
+                    id="typeSelect"
+                    onChange={this.typeChange}
+                    >
+                        <MenuItem value="">
+                        <em>Pokemon Type</em>
+                        </MenuItem>
+                        <MenuItem value='water'>Water</MenuItem>
+                        <MenuItem value='fire'>Fire</MenuItem>
+                        <MenuItem value='grass'>Grass</MenuItem>
+                    </Select>   
+                    </FormControl>
+                </div>
+                    <TextField id="nameSearch" label="Pokemon Name" variant="outlined" onChange={this.handleChange}/><br/>
+                    <Button variant="contained" onClick={this.handleClick}>Search</Button>
+            </section>
+
+            <section id='pokemonList'>
+                <GridList cellHeight={160}>
+                <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+                    <ListSubheader component="div">Pokemon</ListSubheader>
+                </GridListTile>
+                    {this.state.pokemonData.map((pokemon) => (
+                    <GridListTile>
+                        <img src={pokemon.url_image} alt='look at that cute pokemon'/>
+                        <GridListTileBar
+                            title={pokemon.pokemon}
+                            subtitle={pokemon.type_1}
+                            actionIcon={
+                                <IconButton>
+                                <Link to={`/pokemon/${pokemon._id}`}>
+                                  <InfoIcon />
+                                  </Link>
+                                </IconButton>
+                              }
+                        />
+                    </GridListTile>
+                    ))}
+                </GridList>
+            </section>
         </div>
         )
     }

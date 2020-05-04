@@ -1,6 +1,15 @@
 header {
   text-align: center
-  
+}
+
+
+.searchBox {
+  margin-bottom: 10px;
+}
+#typeSelect {
+  width: 120px;
+  margin-right: 10px;
+  /* border: 2px solid black; */
 }
 
 #mainList {
