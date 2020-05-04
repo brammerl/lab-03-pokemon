@@ -44,7 +44,7 @@ it('renders header', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it('renders the drop down for type2', () => {
+it('renders the drop down for type3', () => {
   const wrapper = shallow(<Select />);
 
   expect(wrapper).toMatchSnapshot();

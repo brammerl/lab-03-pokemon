@@ -15,7 +15,6 @@ export default class PokemonList extends Component {
         // wait for the request to finish
         const searchParams = new URLSearchParams(window.location.search);
         const query = searchParams.get('search');
-        const typeQuery = searchParams.get('type');
         if (query) {
             let page = 1;
             if( searchParams.get('page')) {
