@@ -15,7 +15,7 @@ export default class App extends Component {
                 <Router>
                     <Switch>
                         <Route
-                            path='/pokemon/:search/:type'
+                            path='/'
                             exact
                             render={(routerProps) => <SelectionPage {...routerProps} />}
                         />

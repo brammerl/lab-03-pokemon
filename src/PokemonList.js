@@ -24,8 +24,6 @@ export default class PokemonList extends Component {
             if( searchParams.get('page')) {
                 page = searchParams.get('page');
             }
-            this.setState( {searchQuery: query});
-            this.setState( {typeSearch:  typeQuery});
             const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${query}&type=${typeQuery}`)   
 
             const pokemon = data.body.results;
@@ -66,7 +64,6 @@ export default class PokemonList extends Component {
     }
 
     render() {
-        console.log(this.state.searchQuery);
         return (
         <div>
             <Select selectFxn={this.typeChange} 
