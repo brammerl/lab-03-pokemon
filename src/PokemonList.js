@@ -20,9 +20,16 @@ export default class PokemonList extends Component {
             if( searchParams.get('page')) {
                 page = searchParams.get('page');
             }
+            if(searchParams.get('type')){
+                const type = searchParams.get('type');
+                const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${query}&page=${page}&type=${type}`)   
+                const pokemon = data.body.results;
+                this.setState({pokemonData: pokemon, page: page})
+            } else {
             const data = await request.get(`https://alchemy-pokedex.herokuapp.com/api/pokedex?pokemon=${query}&page=${page}`)   
             const pokemon = data.body.results;
             this.setState({pokemonData: pokemon, page: page})
+            }
         } 
     }
     
