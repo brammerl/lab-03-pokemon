@@ -7,13 +7,13 @@ import Header from './Header.js';
 
 export default class DetailPage extends Component {
     state = {
-        pokemonInfo: []
+        pokemonInfo: [],
     }
 
     async componentDidMount() {
         const data = await request.get( `https://alchemy-pokedex.herokuapp.com/api/pokedex/${this.props.match.params.pokemon}`)
-        this.setState({pokemonInfo: data.body})
-        console.log(this.state.pokemonInfo);
+        const pokemonInfo = data.body
+        this.setState({pokemonInfo: pokemonInfo})
     }
     render() {
         return (
@@ -24,7 +24,7 @@ export default class DetailPage extends Component {
                 this.state.pokemonInfo 
                 ? <PokemonProfile name={this.state.pokemonInfo}/>
                 : <h1>Loading</h1> 
-                } 
+                }
             </div>
         )
     }

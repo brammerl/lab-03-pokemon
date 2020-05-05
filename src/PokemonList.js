@@ -135,16 +135,16 @@ export default class PokemonList extends Component {
                     </FormControl>
                 </div>
                     <TextField id="nameSearch" label="Pokemon Name" variant="outlined" onChange={this.handleChange}/><br/>
-                    <Button variant="contained" onClick={this.handleClick}>Search</Button>
+                    <Button id='search' variant="contained" onClick={this.handleClick}>Search</Button>
             </section>
 
             <section id='pokemonList'>
-                <GridList cellHeight={160}>
-                <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
+                <GridList cellHeight={160} spacing='4'>
+                <GridListTile key="Subheader" cols={2} style={{ height: 'auto'}}>
                     <ListSubheader component="div">Pokemon</ListSubheader>
                 </GridListTile>
                     {this.state.pokemonData.map((pokemon) => (
-                    <GridListTile>
+                    <GridListTile style={{height: 160, width: 160}}>
                         <img src={pokemon.url_image} alt='look at that cute pokemon'/>
                         <GridListTileBar
                             title={pokemon.pokemon}
@@ -155,11 +155,15 @@ export default class PokemonList extends Component {
                                   <InfoIcon />
                                   </Link>
                                 </IconButton>
-                              }
+                            }
                         />
                     </GridListTile>
                     ))}
                 </GridList>
+            </section>
+            <section>
+            {this.state.page >= 2 && <button onClick={this.lastPageClick}>Previous</button>}
+            {this.state.pokemonData && <button onClick={this.nextPageClick} id='next'>Next</button>}
             </section>
         </div>
         )

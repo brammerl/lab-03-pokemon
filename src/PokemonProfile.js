@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 
+
 export default class PokemonProfile extends Component {
+
     render() {
         return (
             <div>
@@ -18,7 +20,6 @@ export default class PokemonProfile extends Component {
                                 <li>HP: {this.props.name.hp}</li>
                                 <li><a href={this.props.name.pokedex}>More Info</a></li>
                             </ul>
-                            
                     </section>
                 </section>
             </div>

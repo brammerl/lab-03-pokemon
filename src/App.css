@@ -1,7 +1,9 @@
 header {
   text-align: center
 }
-
+#searchArea {
+  float: left;
+}
 
 .searchBox {
   margin-bottom: 10px;
@@ -11,7 +13,9 @@ header {
   margin-right: 10px;
   /* border: 2px solid black; */
 }
-
+#search {
+  margin-top: 10px;
+}
 #mainList {
   list-style: none;
   display: flex;
