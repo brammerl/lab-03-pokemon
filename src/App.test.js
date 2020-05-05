@@ -4,6 +4,7 @@ import Header from './Header.js';
 import Selector from './Select.js';
 import PokemonProfile from './PokemonProfile.js'
 import PokemonCard from './PokemonCard.js'
+import NameSearch from './NameSearch.js'
 
 
 const testObj = {
@@ -46,21 +47,26 @@ it('renders search bar', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
-it ('renders the pokemon profile', () => {
-  const wrapper = shallow(<PokemonProfile pokemon={testObj}/>)
+it ('renders the pokemon profile2', () => {
+  const wrapper = shallow(<PokemonProfile name={testObj}/>)
 
   expect(wrapper).toMatchSnapshot();
 })
 
-it ('renders header', () => {
+it ('renders header1', () => {
   const wrapper = shallow(<Header/>)
 
   expect(wrapper).toMatchSnapshot();
 })
 
-it ('renders pokemon general card', () => {
+it ('renders pokemon general card1', () => {
   const wrapper = shallow(<PokemonCard pokemon={testObj}/>)
 
   expect(wrapper).toMatchSnapshot();
 })
 
+it ('renders the name search box1', () => {
+  const wrapper = shallow(<NameSearch />)
+
+  expect(wrapper).toMatchSnapshot();
+})
