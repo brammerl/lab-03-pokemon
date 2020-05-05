@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import InputLabel from '@material-ui/core/InputLabel';
 
 export default class Selector extends Component {
@@ -14,7 +13,7 @@ export default class Selector extends Component {
             <InputLabel id="demo-simple-select-helper-label">Type</InputLabel>
             <Select
               labelId="demo-simple-select-helper-label"
-              id="demo-simple-select-helper"
+              id="typeSelect"
               onChange={this.props.selectFxn}
             >
               <MenuItem value="">
@@ -26,8 +25,6 @@ export default class Selector extends Component {
             </Select>
             </FormControl>
             </div>
-                {/* <input onChange={this.props.inputFxn} placeholder='Enter Pokemone Name'/>
-                <button onClick={this.props.clickFxn}>Search</button> */}
             </div>
         )
     }

@@ -1,8 +1,10 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Header from './Header.js';
-import Select from './Select.js';
-import PokemonProfile from './PokemonProfile.js';
+import Selector from './Select.js';
+import PokemonProfile from './PokemonProfile.js'
+import PokemonCard from './PokemonCard.js'
+
 
 const testObj = {
   "_id": "5cef3501ef6005a77cd4fd16",
@@ -38,22 +40,27 @@ const testObj = {
   "pokedex": "http://www.pokemon.com/us/pokedex/venusaur"
   }
 
-it('renders header', () => {
-  const wrapper = shallow(<Header />);
+it('renders search bar', () => {
+  const wrapper = shallow(<Selector />);
 
   expect(wrapper).toMatchSnapshot();
 });
 
-it('renders the drop down for type3', () => {
-  const wrapper = shallow(<Select />);
+it ('renders the pokemon profile', () => {
+  const wrapper = shallow(<PokemonProfile pokemon={testObj}/>)
 
   expect(wrapper).toMatchSnapshot();
-});
+})
 
-it('creates profile2', () => {
-  const wrapper = shallow(<PokemonProfile name={testObj}/>);
+it ('renders header', () => {
+  const wrapper = shallow(<Header/>)
 
   expect(wrapper).toMatchSnapshot();
-});
+})
 
+it ('renders pokemon general card', () => {
+  const wrapper = shallow(<PokemonCard pokemon={testObj}/>)
+
+  expect(wrapper).toMatchSnapshot();
+})
 
