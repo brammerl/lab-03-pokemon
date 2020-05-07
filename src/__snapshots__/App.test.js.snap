@@ -1,0 +1,157 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders header1 1`] = `
+<header>
+  <h1>
+    Pokedex
+  </h1>
+</header>
+`;
+
+exports[`renders pokemon general card1 1`] = `
+<WithStyles(ForwardRef(GridListTile))
+  style={
+    Object {
+      "height": 160,
+      "width": 160,
+    }
+  }
+>
+  <img
+    alt="look at that cute pokemon"
+    src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png"
+  />
+  <WithStyles(ForwardRef(GridListTileBar))
+    actionIcon={
+      <ForwardRef(WithStyles)>
+        <ForwardRef
+          to="/pokemon/5cef3501ef6005a77cd4fd16"
+        >
+          <UNDEFINED />
+        </ForwardRef>
+      </ForwardRef(WithStyles)>
+    }
+    subtitle="grass"
+    title="venusaur"
+  />
+</WithStyles(ForwardRef(GridListTile))>
+`;
+
+exports[`renders search bar 1`] = `
+<div>
+  <div>
+    <WithStyles(ForwardRef(FormControl))
+      className="formControl"
+    >
+      <WithStyles(ForwardRef(InputLabel))
+        id="demo-simple-select-helper-label"
+      >
+        Type
+      </WithStyles(ForwardRef(InputLabel))>
+      <WithStyles(ForwardRef(Select))
+        id="typeSelect"
+        labelId="demo-simple-select-helper-label"
+      >
+        <WithStyles(ForwardRef(MenuItem))
+          value=""
+        >
+          <em>
+            Pokemon Type
+          </em>
+        </WithStyles(ForwardRef(MenuItem))>
+        <WithStyles(ForwardRef(MenuItem))
+          value="water"
+        >
+          Water
+        </WithStyles(ForwardRef(MenuItem))>
+        <WithStyles(ForwardRef(MenuItem))
+          value="fire"
+        >
+          Fire
+        </WithStyles(ForwardRef(MenuItem))>
+        <WithStyles(ForwardRef(MenuItem))
+          value="grass"
+        >
+          Grass
+        </WithStyles(ForwardRef(MenuItem))>
+      </WithStyles(ForwardRef(Select))>
+    </WithStyles(ForwardRef(FormControl))>
+  </div>
+</div>
+`;
+
+exports[`renders the name search box1 1`] = `
+<div>
+  <WithStyles(ForwardRef(TextField))
+    id="nameSearch"
+    label="Pokemon Name"
+    variant="outlined"
+  />
+  <br />
+</div>
+`;
+
+exports[`renders the pokemon profile2 1`] = `
+<div>
+  <h1
+    id="pokemonName"
+  >
+    venusaur
+  </h1>
+  <section
+    id="pokemonBox"
+  >
+    <img
+      alt="Look! A cute pokemon!"
+      id="profileImg"
+      src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/003.png"
+    />
+    <section
+      id="information"
+    >
+      <ul
+        id="basicInfo"
+      >
+        <li>
+          <h2>
+            Basic Information
+          </h2>
+        </li>
+        <li>
+          Generation: 
+          1
+        </li>
+        <li>
+          Primary Type: 
+          grass
+        </li>
+        <li>
+          Height: 
+          20
+           meters
+        </li>
+        <li>
+          Weight: 
+          1000
+           kg
+        </li>
+        <li>
+          Base XP: 
+          236
+        </li>
+        <li>
+          HP: 
+          80
+        </li>
+        <li>
+          <a
+            href="http://www.pokemon.com/us/pokedex/venusaur"
+          >
+            More Info
+          </a>
+        </li>
+      </ul>
+    </section>
+  </section>
+</div>
+`;

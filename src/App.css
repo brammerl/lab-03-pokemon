@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+header {
+  text-align: center
+}
+#searchArea {
+  float: left;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.searchBox {
+  margin-bottom: 10px;
+}
+#typeSelect {
+  width: 120px;
+  margin-right: 10px;
+  /* border: 2px solid black; */
+}
+#search {
+  margin-top: 10px;
+}
+#mainList {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  flex-wrap:wrap;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.box {
+  margin: 100px;
+  border: 2px solid black;
+  display: flex;
+  width: 400px;
+  height: 400px;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+img {
+  width:200px;
+  height: 200px;
+}
+
+
+/* Detail Page CSS */
+
+#pokemonBox {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+#basicInfo {
+  list-style: none;
 }
+ #pokemonName {
+   text-align: center;
+ }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+ #profileImg {
+   width: 300px;
+   height: 300px;
+   border: 2px solid black;
+   padding: 10px;
+ }
